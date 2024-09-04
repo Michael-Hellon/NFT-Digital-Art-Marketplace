@@ -10,11 +10,12 @@ db.once('open', async () => {
   // this will be changed to the categories of art, ie: anime, nature, sports, cars, pets, food...
   const categories = await Category.insertMany([
     { name: 'Animals'},
+    { name: 'Anime' },
+    { name: 'Nature' },
+    { name: 'Sports' },
+    { name: 'Cars' },
     { name: 'Food' },
-    // { name: 'Household Supplies' },
-    // { name: 'Electronics' },
-    // { name: 'Books' },
-    // { name: 'Toys' },
+    { name: 'Landmarks' },
     
   ]);
 
@@ -22,11 +23,12 @@ db.once('open', async () => {
 
   //This will change to the NFT items.
   const products = await Product.insertMany([
+    // NFT size no more than 640x640 
     {
-      name: 'Howie The Cat',
+      name: 'Howie 640 The Cat',
       description:
-        'Howie the Cat in Vampire mood with tongue sticking out.',
-      image: 'Howie-The-Cat.png',
+        'Howie640',
+      image: 'Howie640.png',
       category: categories[0]._id,
       price: 35.00,
       quantity: 100
@@ -36,7 +38,7 @@ db.once('open', async () => {
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
       image: 'cookie-tin.jpg',
-      category: categories[1]._id,
+      category: categories[5]._id,
       price: 2.99,
       quantity: 500
     },

@@ -43,7 +43,7 @@ function Nav() {
       <h1>
         <Link to="/">
           <span role="img" aria-label="shopping bag">🛍️</span>
-          -Shop-Shop
+          Open-Air NFT Market Place
         </Link>
       </h1>
 
