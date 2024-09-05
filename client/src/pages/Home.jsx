@@ -1,4 +1,4 @@
-import ProductList from "../components/ProductList";
+import ArtList from "../components/ArtList";
 import CategoryMenu from "../components/CategoryMenu";
 import Cart from "../components/Cart";
 
@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="container">
       <CategoryMenu />
-      <ProductList />
+      <ArtList />
       <Cart />
     </div>
   );

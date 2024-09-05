@@ -14,9 +14,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "postcss": "^8.4.45",
+    "postcss-cli": "^11.0.0"
   },
   "dependencies": {
-    "mern-shopping": "file:"
+    "daisyui": "^4.12.10",
+    "flowbite": "^2.5.1",
+    "mern-shopping": "file:",
+    "tailwindcss": "^3.4.10"
   }
 }

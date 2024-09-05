@@ -4,7 +4,7 @@ const typeDefs = /* GraphQL */`
     name: String
   }
 
-  type Product {
+  type Art {
     _id: ID
     name: String
     description: String
@@ -17,7 +17,7 @@ const typeDefs = /* GraphQL */`
   type Order {
     _id: ID
     purchaseDate: String
-    products: [Product]
+    artPieces: [Art]
   }
 
   type User {
@@ -37,7 +37,7 @@ const typeDefs = /* GraphQL */`
     user: User
   }
 
-  input ProductInput {
+  input ArtInput {
     _id: ID
     purchaseQuantity: Int
     name: String
@@ -48,18 +48,18 @@ const typeDefs = /* GraphQL */`
 
   type Query {
     categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
+    artPieces(category: ID, name: String): [Art]
+    art(_id: ID!): Art
     user: User
     order(_id: ID!): Order
-    checkout(products: [ProductInput]): Checkout
+    checkout(artPieces: [ArtInput]): Checkout
   }
 
   type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
+    addOrder(artPieces: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
+    updateArt(_id: ID!, quantity: Int!): Art
     login(email: String!, password: String!): Auth
   }
 `;

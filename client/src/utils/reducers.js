@@ -1,5 +1,5 @@
 import {
-  UPDATE_PRODUCTS,
+  UPDATE_ARTPIECES,
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
   REMOVE_FROM_CART,
@@ -12,40 +12,40 @@ import {
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case UPDATE_PRODUCTS:
+    case UPDATE_ARTPIECES:
       return {
         ...state,
-        products: [...action.products],
+        artPieces: [...action.artPieces],
       };
 
     case ADD_TO_CART:
       return {
         ...state,
         cartOpen: true,
-        cart: [...state.cart, action.product],
+        cart: [...state.cart, action.art],
       };
 
     case ADD_MULTIPLE_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, ...action.products],
+        cart: [...state.cart, ...action.artPieces],
       };
 
     case UPDATE_CART_QUANTITY:
       return {
         ...state,
         cartOpen: true,
-        cart: state.cart.map(product => {
-          if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity
+        cart: state.cart.map(art => {
+          if (action._id === art._id) {
+            art.purchaseQuantity = action.purchaseQuantity
           }
-          return product
+          return art
         })
       };
 
     case REMOVE_FROM_CART:
-      let newState = state.cart.filter(product => {
-        return product._id !== action._id;
+      let newState = state.cart.filter(art => {
+        return art._id !== action._id;
       });
 
       return {

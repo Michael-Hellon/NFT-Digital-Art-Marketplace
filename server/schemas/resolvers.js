@@ -1,4 +1,4 @@
-const { User, Product, Category, Order } = require('../models');
+const { User, Art, Category, Order } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -7,7 +7,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    products: async (parent, { category, name }) => {
+    artPieces: async (parent, { category, name }) => {
       const params = {};
 
       if (category) {
@@ -20,15 +20,15 @@ const resolvers = {
         };
       }
 
-      return await Product.find(params).populate('category');
+      return await Art.find(params).populate('category');
     },
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+    art: async (parent, { _id }) => {
+      return await Art.findById(_id).populate('category');
     },
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
+          path: 'orders.artPieces',
           populate: 'category'
         });
 
@@ -42,7 +42,7 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
+          path: 'orders.artPieces',
           populate: 'category'
         });
 
@@ -53,23 +53,23 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      await Order.create({ products: args.products.map(({ _id }) => _id) });
+      await Order.create({ artPieces: args.artPieces.map(({ _id }) => _id) });
       const line_items = [];
 
       // eslint-disable-next-line no-restricted-syntax
-      for (const product of args.products) {
-        // Create a line item for each product
+      for (const art of args.artPieces) {
+        // Create a line item for each piece of art
         line_items.push({
           price_data: {
             currency: 'usd',
-            product_data: {
-              name: product.name,
-              description: product.description,
-              images: [`${url}/images/${product.image}`]
+            art_data: {
+              name: art.name,
+              description: art.description,
+              images: [`${url}/images/${art.image}`]
             },
-            unit_amount: product.price * 100,
+            unit_amount: art.price * 100,
           },
-          quantity: product.purchaseQuantity,
+          quantity: art.purchaseQuantity,
         });
       }
 
@@ -91,9 +91,9 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { products }, context) => {
+    addOrder: async (parent, { artPieces }, context) => {
       if (context.user) {
-        const order = new Order({ products });
+        const order = new Order({ artPieces });
 
         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
 
@@ -109,10 +109,10 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-    updateProduct: async (parent, { _id, quantity }) => {
+    updateArt: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+      return await Art.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
