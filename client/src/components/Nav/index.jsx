@@ -1,3 +1,4 @@
+import React from 'react';
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 
@@ -24,8 +25,8 @@ function Nav() {
       );
     } else {
       return (
-        <div className="container mx-auto">
-        {/* <h1 style={{backgroundColor: "Red", margin: "1% 5% 1% 5%", padding: "1% 5% 1% 5%"}}> */}
+ 
+        // <h1 style={{backgroundColor: "Red", margin: "1% 5% 1% 5%", padding: "1% 5% 1% 5%"}}>
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/signup">
@@ -38,14 +39,17 @@ function Nav() {
             </Link>
           </li>
         </ul>
-        {/* </h1> */}
-        </div>
+
+
       );
     }
   }
 
   return (
-    <h1 style={{backgroundColor: "purple", margin: "2% 10% 2% 10%", padding: "2% 10% 2% 10%"}}>
+    // <div className="">
+
+    <div>
+      <nav className="mx-auto bg-blue-500 text-white p-4" >
     <header className="flex-row px-1">
      
         <Link to="/">
@@ -59,7 +63,8 @@ function Nav() {
         {showNavigation()}
       </nav>
     </header>
-  </h1>
+    </nav>
+  </div>
   );
 
 }
