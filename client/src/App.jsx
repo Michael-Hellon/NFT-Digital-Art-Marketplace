@@ -1,3 +1,4 @@
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import {
   ApolloClient,
@@ -7,6 +8,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+// import Header from './components/Header';
+// remove Nav once Header is completed
 import Nav from './components/Nav';
 import { StoreProvider } from './utils/GlobalState';
 
@@ -31,12 +34,15 @@ const client = new ApolloClient({
 
 // don't change below - <outlet> must be there to display items
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
+        {/* <Header /> */}
         <Nav />
         <Outlet />
       </StoreProvider>
+
     </ApolloProvider>
   );
 }

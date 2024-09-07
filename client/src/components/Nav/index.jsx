@@ -6,6 +6,7 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
+
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/orderHistory">
@@ -19,9 +20,12 @@ function Nav() {
             </a>
           </li>
         </ul>
+
       );
     } else {
       return (
+        <div className="container mx-auto">
+        {/* <h1 style={{backgroundColor: "Red", margin: "1% 5% 1% 5%", padding: "1% 5% 1% 5%"}}> */}
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/signup">
@@ -34,24 +38,30 @@ function Nav() {
             </Link>
           </li>
         </ul>
+        {/* </h1> */}
+        </div>
       );
     }
   }
 
   return (
+    <h1 style={{backgroundColor: "purple", margin: "2% 10% 2% 10%", padding: "2% 10% 2% 10%"}}>
     <header className="flex-row px-1">
-      <h1>
+     
         <Link to="/">
+
           <span role="img" aria-label="shopping bag">🛍️</span>
-          Open-Air NFT Market Place
+          Open Air NFT Market Place
         </Link>
-      </h1>
+
 
       <nav>
         {showNavigation()}
       </nav>
     </header>
+  </h1>
   );
+
 }
 
 export default Nav;
