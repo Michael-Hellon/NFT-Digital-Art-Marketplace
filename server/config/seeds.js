@@ -1,10 +1,10 @@
 const db = require('./connection');
-const { User, Art, Category } = require('../models');
+const { User, Product, Category } = require('../models');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   await cleanDB('Category', 'categories');
-  await cleanDB('Art', 'artPieces');
+  await cleanDB('Product', 'products');
   await cleanDB('User', 'users');
 
   // this will be changed to the categories of art, ie: anime, nature, sports, cars, pets, food...
@@ -22,7 +22,7 @@ db.once('open', async () => {
   console.log('categories seeded');
 
   //This will change to the NFT items.
-  const artPieces = await Art.insertMany([
+  const products = await Product.insertMany([
     // NFT size no more than 640x640 
     {
       name: 'Howie 640 The Cat',
@@ -54,7 +54,7 @@ db.once('open', async () => {
 
   ]);
 
-  console.log('art pieces seeded');
+  console.log('products seeded');
 
   await User.create({
     firstName: 'Peter',
@@ -63,7 +63,7 @@ db.once('open', async () => {
     password: 'abcde12345',
     orders: [
       {
-        artPieces: [artPieces[0]._id, artPieces[0]._id, artPieces[1]._id]
+        products: [products[0]._id, products[0]._id, products[1]._id]
       }
     ]
   });

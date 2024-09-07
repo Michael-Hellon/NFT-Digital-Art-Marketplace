@@ -8,9 +8,9 @@ import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
-  UPDATE_ARTPIECES,
+  UPDATE_PRODUCTS,
 } from '../utils/actions';
-import { QUERY_ARTPIECES } from '../utils/queries';
+import { QUERY_PRODUCTS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
@@ -18,49 +18,49 @@ function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
-  const [currentArt, setCurrentArt] = useState({});
+  const [currentProduct, setCurrentProduct] = useState({});
 
-  const { loading, data } = useQuery(QUERY_ARTPIECES);
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const { artPieces, cart } = state;
+  const { products, cart } = state;
 
   useEffect(() => {
     // already in global store
-    if (artPieces.length) {
-      const art = artPieces.find((art) => art._id === id);
+    if (products.length) {
+      const product = products.find((product) => product._id === id);
 
       const item = {
-        image: art.image,
-        name: art.name,
-        _id: art._id,
-        description: art.description,
-        price: art.price,
-        quantity: art.quantity,
+        image: product.image,
+        name: product.name,
+        _id: product._id,
+        description: product.description,
+        price: product.price,
+        quantity: product.quantity,
       };
       
-      setCurrentArt(item);
+      setCurrentProduct(item);
     }
     // retrieved from server
     else if (data) {
       dispatch({
-        type: UPDATE_ARTPIECES,
-        artPieces: data.artPieces,
+        type: UPDATE_PRODUCTS,
+        products: data.products,
       });
 
-      data.artPieces.forEach((art) => {
-        idbPromise('artPieces', 'put', art);
+      data.products.forEach((product) => {
+        idbPromise('products', 'put', product);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('artPieces', 'get').then((indexedArtPieces) => {
+      idbPromise('products', 'get').then((indexedProducts) => {
         dispatch({
-          type: UPDATE_ARTPIECES,
-          artPieces: indexedArtPieces,
+          type: UPDATE_PRODUCTS,
+          products: indexedProducts,
         });
       });
     }
-  }, [artPieces, data, loading, dispatch, id]);
+  }, [products, data, loading, dispatch, id]);
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
@@ -77,38 +77,38 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        art: { ...currentArt, purchaseQuantity: 1 },
+        product: { ...currentProduct, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...currentArt, purchaseQuantity: 1 });
+      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
     }
   };
 
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
-      _id: currentArt._id,
+      _id: currentProduct._id,
     });
 
-    idbPromise('cart', 'delete', { ...currentArt });
+    idbPromise('cart', 'delete', { ...currentProduct });
   };
 
 
 // need to re-arrange layout of this page  
   return (
     <>
-      {currentArt && cart ? (
+      {currentProduct && cart ? (
         <div className="container my-1">
-          <Link to="/">← Back to Art Pieces</Link>
+          <Link to="/">← Back to Products</Link>
 
-          <h2>{currentArt.name}</h2>
+          <h2>{currentProduct.name}</h2>
 
-          {/* <p>{currentArt.description}</p> */}
+          {/* <p>{currentProduct.description}</p> */}
 
           <p>
-            <strong>Price:</strong>${currentArt.price}{' '}
+            <strong>Price:</strong>${currentProduct.price}{' '}
             <button onClick={addToCart}>Add to Cart</button>
             <button
-              disabled={!cart.find((p) => p._id === currentArt._id)}
+              disabled={!cart.find((p) => p._id === currentProduct._id)}
               onClick={removeFromCart}
               
             >
@@ -117,11 +117,11 @@ function Detail() {
           </p>
 
           <img
-            src={`/images/${currentArt.image}`}
-            alt={currentArt.name}
+            src={`/images/${currentProduct.image}`}
+            alt={currentProduct.name}
           />
           <div className="description">
-          <strong>Description:</strong>{currentArt.description}{' '}
+          <strong>Description:</strong>{currentProduct.description}{' '}
 
           </div>
         </div>
