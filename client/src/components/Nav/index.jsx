@@ -1,13 +1,15 @@
-import React from 'react';
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import Singup from "../../pages/Signup";
+import Login from "../../pages/Login";
+
+import './style.css';
 
 function Nav() {
 
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/orderHistory">
@@ -21,52 +23,47 @@ function Nav() {
             </a>
           </li>
         </ul>
-
       );
     } else {
       return (
- 
-        // <h1 style={{backgroundColor: "Red", margin: "1% 5% 1% 5%", padding: "1% 5% 1% 5%"}}>
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
-
-
+        <>
+        <button
+          className="bg-blue-200 text-black active:bg-blue-500 font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+          type="button"
+          onClick={() => setSignupModal(false)}
+          // onClick={setSignupModal}
+>
+        Signup
+        </button>
+      <button
+        className="bg-blue-200 text-black active:bg-blue-500 font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+        type="button"
+        onClick={() => setLoginModal(true)}
+      >
+        Login
+      </button>
+      </>
       );
     }
   }
 
   return (
-    // <div className="">
-
-    <div>
-      <nav className="mx-auto bg-blue-500 text-white p-4" >
     <header className="flex-row px-1">
-     
+      <h1>
         <Link to="/">
-
-          <span role="img" aria-label="shopping bag">🛍️</span>
-          Open Air NFT Market Place
+          <div className="title">
+            <span role="img" aria-label="shopping bag">
+            OpenAir NFT Market Place
+            </span>
+          </div>
         </Link>
-
+      </h1>
 
       <nav>
         {showNavigation()}
       </nav>
     </header>
-    </nav>
-  </div>
   );
-
 }
 
 export default Nav;

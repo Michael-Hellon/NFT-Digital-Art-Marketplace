@@ -1,5 +1,18 @@
-.container {
-
+.title {
+    padding-top: .5rem;
+    margin:auto;
+    color:aqua;
+    font-size: 3rem;
+    text-align: center;
+    background-color: blue;
+    height: 8rem;
+    border-radius: 20px;
+    max-width: 95%;
 }
 
-<h1 style={{container, mx-auto, backgroundColor: "Red", margin: "1% 5% 1% 5%", padding: "1% 5% 1% 5%"}}>
+.user_access {
+    text-align: center;
+    margin:auto;
+    color:aqua;
+    background-color: blue
+}

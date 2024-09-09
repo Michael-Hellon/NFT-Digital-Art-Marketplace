@@ -29,7 +29,7 @@ const Cart = () => {
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise('cart', 'get');
-      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+      dispatch({ type: ADD_MULTIPLE_TO_CART, pieces: [...cart] });
     }
 
     if (!state.cart.length) {
@@ -49,11 +49,11 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
-  // This sends the getCheckout to the backend to create out new checkout session with the products in our our cart.
+  // This sends the getCheckout to the backend to create our new checkout session with the art pieces in our our cart.
   function submitCheckout() {
     getCheckout({
       variables: { 
-        products: [...state.cart],
+        pieces: [...state.cart],
       },
     });
   }

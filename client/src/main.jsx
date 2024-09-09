@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         path: '/orderHistory',
         element: <OrderHistory />
       }, {
-        path: '/products/:id',
+        path: '/pieces/:id',
         element: <Detail />
       }
     ]

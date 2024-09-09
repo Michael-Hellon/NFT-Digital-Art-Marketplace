@@ -1,9 +1,8 @@
 {
-  "name": "mern-server",
+  "name": "OpenAir NFT",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon",
@@ -18,6 +17,7 @@
     "express": "^4.17.2",
     "graphql": "^16.6.0",
     "jsonwebtoken": "^8.5.1",
+
     "mongoose": "^8.0.0",
     "stripe": "^8.67.0"
   },

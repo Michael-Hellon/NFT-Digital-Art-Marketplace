@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import {
   ApolloClient,
@@ -7,9 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-// import Header from './components/Header';
-// remove Nav once Header is completed
+import SingUpModal from './components/signUpModal'
 import Nav from './components/Nav';
 import { StoreProvider } from './utils/GlobalState';
 
@@ -34,16 +31,22 @@ const client = new ApolloClient({
 
 // don't change below - <outlet> must be there to display items
 function App() {
-
   return (
+<div className="rounded-s-full">
+       
     <ApolloProvider client={client}>
+
       <StoreProvider>
-        {/* <Header /> */}
-        <Nav />
-        <Outlet />
+        
+         <Nav />
+         {/* <div className="App flex flex-col items-center justify-center" onClick={SignUpModal}>
+            <SignUpModal />
+          </div> */}
+        <Outlet />       
       </StoreProvider>
 
     </ApolloProvider>
+ </div>
   );
 }
 

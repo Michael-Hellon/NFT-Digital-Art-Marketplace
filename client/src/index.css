@@ -3,6 +3,20 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.user_access {
+  text-align: center;
+  margin:auto;
+  color:aqua;
+  background-color: Red
+}
+
+
+
+
 /* :root {
   --primary: #232F3E;
   --secondary: #F3A847;

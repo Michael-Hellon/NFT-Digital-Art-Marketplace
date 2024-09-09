@@ -8,9 +8,9 @@ import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
-  UPDATE_PRODUCTS,
+  UPDATE_PIECES,
 } from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_PIECES } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
@@ -18,49 +18,49 @@ function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
-  const [currentProduct, setCurrentProduct] = useState({});
+  const [currentPiece, setCurrentPiece] = useState({});
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const { loading, data } = useQuery(QUERY_PIECES);
 
-  const { products, cart } = state;
+  const { pieces, cart } = state;
 
   useEffect(() => {
     // already in global store
-    if (products.length) {
-      const product = products.find((product) => product._id === id);
+    if (pieces.length) {
+      const piece = pieces.find((piece) => piece._id === id);
 
       const item = {
-        image: product.image,
-        name: product.name,
-        _id: product._id,
-        description: product.description,
-        price: product.price,
-        quantity: product.quantity,
+        image: piece.image,
+        name: piece.name,
+        _id: piece._id,
+        description: piece.description,
+        price: piece.price,
+        quantity: piece.quantity,
       };
       
-      setCurrentProduct(item);
+      setCurrentPiece(item);
     }
     // retrieved from server
     else if (data) {
       dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
+        type: UPDATE_PIECES,
+        pieces: data.pieces,
       });
 
-      data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
+      data.pieces.forEach((piece) => {
+        idbPromise('pieces', 'put', piece);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
+      idbPromise('pieces', 'get').then((indexedPieces) => {
         dispatch({
-          type: UPDATE_PRODUCTS,
-          products: indexedProducts,
+          type: UPDATE_PIECES,
+          pieces: indexedPieces,
         });
       });
     }
-  }, [products, data, loading, dispatch, id]);
+  }, [pieces, data, loading, dispatch, id]);
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
@@ -77,38 +77,53 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: 1 },
+        piece: { ...currentPiece, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise('cart', 'put', { ...currentPiece, purchaseQuantity: 1 });
     }
   };
 
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
-      _id: currentProduct._id,
+      _id: currentPiece._id,
     });
 
-    idbPromise('cart', 'delete', { ...currentProduct });
+    idbPromise('cart', 'delete', { ...currentPiece });
   };
 
 
 // need to re-arrange layout of this page  
   return (
     <>
-      {currentProduct && cart ? (
+      {currentPiece && cart ? (
         <div className="container my-1">
-          <Link to="/">← Back to Products</Link>
+          <Link to="/">← Back to Art Pieces</Link>
 
-          <h2>{currentProduct.name}</h2>
+          {/* <div className="max-w-sm w-full lg:max-w-full lg:flex">
+            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
+            </div>
+              <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div className="mb-8">
+                  <p className="text-sm text-gray-600 flex items-center">
+                    <img src={`/images/${currentPiece.image}`} alt={currentPiece.name}/>
 
-          {/* <p>{currentProduct.description}</p> */}
+
+                    {/* <svg className="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                    </svg> */} */}
+
+
+
+          <h2>{currentPiece.name}</h2>
+
+          {/* <p>{currentPiece.description}</p> */}
 
           <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
+            <strong>Price:</strong>${currentPiece.price}{' '}
             <button onClick={addToCart}>Add to Cart</button>
             <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
+              disabled={!cart.find((p) => p._id === currentPiece._id)}
               onClick={removeFromCart}
               
             >
@@ -117,11 +132,11 @@ function Detail() {
           </p>
 
           <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
+            src={`/images/${currentPiece.image}`}
+            alt={currentPiece.name}
           />
           <div className="description">
-          <strong>Description:</strong>{currentProduct.description}{' '}
+          <strong>Description:</strong>{currentPiece.description}{' '}
 
           </div>
         </div>
