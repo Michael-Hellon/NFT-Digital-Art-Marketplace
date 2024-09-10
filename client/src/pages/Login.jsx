@@ -7,16 +7,19 @@ import Auth from '../utils/auth';
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
-  const [loginModal, setLoginModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(true);
 
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
+
     try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
+      // console.log("token A from login in:", token);
       const token = mutationResponse.data.login.token;
+      // console.log("token B from login in:", token);
+
       Auth.login(token);
     } catch (e) {
       console.log(e);
@@ -39,16 +42,16 @@ function Login(props) {
         type="button"
         onClick={() => setLoginModal(true)}
       >
-        Login
+        Log In
       </button>
-      <form onSubmit={handleFormSubmit}>
+      <form >
       {loginModal ? (
         <>
           <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
-                  <h3 className="text-3xl font=semibold">SIGN UP</h3>
+                  <h3 className="text-3xl font=semibold">LOGIN</h3>
                   <button
                     className="bg-transparent border-0 text-black float-right"
                     onClick={() =>setLoginModal(false)}
@@ -59,7 +62,7 @@ function Login(props) {
                   </button>
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <form className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full">
+                  <div className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full">
 
                     <label htmlFor="email" className="block text-black text-sm font-bold mb-1">
                       Email Address
@@ -83,20 +86,23 @@ function Login(props) {
                       onChange={handleChange}
                     />
                               
-                  </form>
+                  </div>
                 </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <button
+                  {/* <button
                     className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type="button"
                     onClick={() => setLoginModal(false)}
                   >
-                  <Link to="/signup">← Go to Signup</Link>
-                  </button>
+                   Signup
+                  </button> */}
                   <button
                     className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type="button"
-                    onClick={() => setLoginModal(false)}
+                  
+                    onClick={() => {handleFormSubmit()
+                      setLoginModal(false)}}
+                    
                   >
                     Submit
                   </button>

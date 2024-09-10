@@ -4,7 +4,7 @@ import Cart from "../components/Cart";
 
 const Home = () => {
   return (
-    <h1 style={{backgroundColor: "lightblue", margin: "1% 5% 1% 5%", padding: "1% 5% 1% 5%"}}>
+    <h1 style={{ /*backgroundColor: "lightblue",borderRadius:"5%",*/ maxWidth: "95%", margin: "1% 2.5% 1% 2.5%", padding: "1% 5% 1% 5%"}}>
 
     <div className="container">
       <CategoryMenu />

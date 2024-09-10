@@ -88,6 +88,7 @@ const resolvers = {
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
+      // console.log("token A from resolvers in:", token);
 
       return { token, user };
     },
@@ -128,6 +129,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+      // console.log("token B from resolver in:", token);
 
       return { token, user };
     }

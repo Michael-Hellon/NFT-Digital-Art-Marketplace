@@ -11,7 +11,7 @@ function Signup(props) {
   const [signupModal, setSignupModal] = useState(false);
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
+
     const mutationResponse = await addUser({
       variables: {
         email: formState.email,
@@ -20,7 +20,10 @@ function Signup(props) {
         lastName: formState.lastName,
       },
     });
+    // console.log("Mutation Response", mutationResponse);
     const token = mutationResponse.data.addUser.token;
+    // console.log("token A from Signup in:", token);
+
     Auth.login(token);
   };
 
@@ -40,11 +43,9 @@ function Signup(props) {
         type="button"
         onClick={() => setSignupModal(true)}
       >
-      <Link to="/login">← Go to Login</Link>
-
-        Signup
+        Sign Up
       </button>
-      <form onSubmit={handleFormSubmit}>
+      <form >
       {signupModal ? (
         <>
           <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -62,7 +63,7 @@ function Signup(props) {
                   </button>
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <form className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full">
+                  <div className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 w-full">
 
                     <label htmlFor="firstName" className="block text-black text-sm font-bold mb-1">
                       First Name
@@ -108,20 +109,22 @@ function Signup(props) {
                       onChange={handleChange}
                     />
                   
-                  </form>
+                  </div>
                 </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                  <button
+                  {/* <button
                     className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type="button"
                     onClick={() => setSignupModal(false)}
                   >
-                  <Link to="/login">← Go to Login</Link>
-                  </button>
+                  Login
+                  </button> */}
                   <button
                     className="text-white bg-yellow-500 active:bg-yellow-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                     type="button"
-                    onClick={() => setSignupModal(false)}
+                    
+                    onClick={() => {handleFormSubmit()
+                      setSignupModal(false)}}
                   >
                     Submit
                   </button>

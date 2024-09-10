@@ -48,16 +48,21 @@ function ArtList() {
       <h2>Our Art Pieces:</h2>
       {state.pieces.length ? (
         <div className="flex-row">
+          {/* outside the card */}
           {filterPieces().map((piece) => (
             <ArtItem
+            
               key={piece._id}
               _id={piece._id}
               image={piece.image}
               name={piece.name}
               price={piece.price}
               quantity={piece.quantity}
-            />
+              artist={piece.artist}
+            />            
+
           ))}
+          {/* outside the card */}
         </div>
       ) : (
         <h3>You haven't added any art pieces yet!</h3>

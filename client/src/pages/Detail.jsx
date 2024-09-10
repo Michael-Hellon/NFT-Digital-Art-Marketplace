@@ -97,47 +97,32 @@ function Detail() {
   return (
     <>
       {currentPiece && cart ? (
-        <div className="container my-1">
-          <Link to="/">← Back to Art Pieces</Link>
-
-          {/* <div className="max-w-sm w-full lg:max-w-full lg:flex">
-            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
+        <div className="container m-auto my-3">
+          <div className="text-base">
+            <Link to="/">← Back to Art Pieces</Link>
+          </div>
+          <div className="mt-5 max-w-sm w-full lg:max-w-full lg:flex ">
+            {/* image */}
+            <div className="h-auto lg:h-auto lg:w-auto flex-none bg-cover rounded-t-none lg:rounded-l-2xl text-center overflow-hidden">
+              <img src={`/images/${currentPiece.image}`} alt={currentPiece.name}/>
             </div>
-              <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                <div className="mb-8">
-                  <p className="text-sm text-gray-600 flex items-center">
-                    <img src={`/images/${currentPiece.image}`} alt={currentPiece.name}/>
+            {/* text box */}
+            <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-r-2xl p-8 flex flex-col justify-between leading-normal">
+              <div className="mb-8">
+                {/* <p className="text-sm text-gray-600 flex items-center">
+                  <img src={`/images/${currentPiece.image}`} alt={currentPiece.name}/>
+                  </p> */}
+                  <div className="currentPieceName text-gray-900 font-bold text-3xl mb-10">{currentPiece.name}</div>
+                  <div className="piecePrice text-gray-900 font-bold text-2xl mb-5">${currentPiece.price}{' '}</div>
+                  <p className="description text-gray-700 text-xl">{currentPiece.description}{' '}</p>
+              </div>
+              <div className="flex items-center">
+                  <div className="text-sm">
+                  <p className="text-gray-900 leading-none">{currentPiece.artist}{' '}</p>
 
-
-                    {/* <svg className="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-                    </svg> */} */}
-
-
-
-          <h2>{currentPiece.name}</h2>
-
-          {/* <p>{currentPiece.description}</p> */}
-
-          <p>
-            <strong>Price:</strong>${currentPiece.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === currentPiece._id)}
-              onClick={removeFromCart}
-              
-            >
-              Remove from Cart
-            </button>
-          </p>
-
-          <img
-            src={`/images/${currentPiece.image}`}
-            alt={currentPiece.name}
-          />
-          <div className="description">
-          <strong>Description:</strong>{currentPiece.description}{' '}
-
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       ) : null}

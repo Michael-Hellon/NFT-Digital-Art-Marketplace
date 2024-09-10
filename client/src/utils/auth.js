@@ -2,6 +2,8 @@ import decode from 'jwt-decode';
 
 class AuthService {
   getProfile() {
+    // console.log("token A from src/utils/auth in:", token);
+
     return decode(this.getToken());
   }
 
@@ -14,6 +16,8 @@ class AuthService {
   isTokenExpired(token) {
     try {
       const decoded = decode(token);
+      // console.log("token B from src/utils/auth in:", token);
+
       if (decoded.exp < Date.now() / 1000) {
         return true;
       } else return false;
@@ -24,11 +28,15 @@ class AuthService {
 
   getToken() {
     // Retrieves the user token from localStorage
+    // console.log("id_token C from src/utils/auth in:", token);
+
     return localStorage.getItem('id_token');
   }
 
   login(idToken) {
     // Saves user token to localStorage
+    // console.log("idToken D from src/utils/auth in:", token);
+
     localStorage.setItem('id_token', idToken);
 
     window.location.assign('/');

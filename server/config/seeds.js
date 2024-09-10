@@ -9,13 +9,14 @@ db.once('open', async () => {
 
   // this will be changed to the categories of art, ie: anime, nature, sports, cars, pets, food...
   const categories = await Category.insertMany([
-    { name: 'Animals'},
-    { name: 'Anime' },
-    { name: 'Nature' },
-    { name: 'Sports' },
-    { name: 'Cars' },
-    { name: 'Food' },
-    { name: 'Landmarks' },
+    { name: 'Animals'},   // 0
+    { name: 'Anime' },    // 1
+    { name: 'Nature' },   // 2
+    { name: 'Sports' },   // 3
+    { name: 'Spiritual' },// 4
+    { name: 'Food' },     // 5
+    { name: 'Landmarks'}, // 6
+    { name: 'Patterns'},  // 7
     
   ]);
 
@@ -27,29 +28,52 @@ db.once('open', async () => {
     {
       name: 'Howie 640 The Cat',
       description:
-        'Howie640',
+        'Howie the cat, in vampire mode with tongue sticking out',
       image: 'Howie640.png',
       category: categories[0]._id,
       price: 35.00,
-      quantity: 100
+      quantity: 10,
+      artist: 'CrunchyNugget6',
     },
     {
-      name: 'Tin of Cookies',
+      name: 'Pattern X',
       description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
-      category: categories[5]._id,
-      price: 2.99,
-      quantity: 500
+        'Colorful Rainbow Mandela.',
+      image: 'pattern_x.png',
+      category: categories[7]._id,
+      price: 75.00,
+      quantity: 50,
+      artist: 'UnderWorld71',
     },
     {
-      name: 'Canned Coffee',
+      name: 'Balance',
       description:
-        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
-      category: categories[1]._id,
-      price: 1.99,
-      quantity: 500
+        'A Yin and Yang for balance in your life.',
+      image: 'balance.png',
+      category: categories[4]._id,
+      price: 20.00,
+      quantity: 500,
+      artist: 'UnderWorld71',
+    },
+    {
+      name: 'Awes',
+      description:
+        'Are you floating are falling as you contemplate digital fears and wonders.',
+      image: 'awes.png',
+      category: categories[7]._id,
+      price: 45.00,
+      quantity: 500,
+      artist: 'UnderWorld71',
+    },
+    {
+      name: 'Rainbows',
+      description:
+        'A scattered rainbow mosaic.',
+      image: 'rainbow.png',
+      category: categories[2]._id,
+      price: 95.00,
+      quantity: 500,
+      artist: 'UnderWorld71',
     },
 
   ]);

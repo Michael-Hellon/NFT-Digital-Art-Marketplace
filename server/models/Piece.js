@@ -8,6 +8,11 @@ const pieceSchema = new Schema({
     required: true,
     trim: true
   },
+  artist: {
+    type: String,
+    required: true,
+    trim: true
+  }, 
   description: {
     type: String
   },
