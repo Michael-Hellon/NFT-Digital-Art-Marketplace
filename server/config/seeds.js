@@ -85,11 +85,11 @@ db.once('open', async () => {
     lastName: 'Griffin',
     email: 'pg@aol.com',
     password: 'abcde12345',
-    orders: [
-      {
-        pieces: [pieces[0]._id, pieces[0]._id, pieces[1]._id]
-      }
-    ]
+    // orders: [
+    //   {
+    //     pieces: [pieces[0]._id, pieces[0]._id, pieces[1]._id]
+    //   }
+    // ]
   });
 
   await User.create({

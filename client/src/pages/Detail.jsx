@@ -115,10 +115,12 @@ function Detail() {
                   <div className="currentPieceName text-gray-900 font-bold text-3xl mb-10">{currentPiece.name}</div>
                   <div className="piecePrice text-gray-900 font-bold text-2xl mb-5">${currentPiece.price}{' '}</div>
                   <p className="description text-gray-700 text-xl">{currentPiece.description}{' '}</p>
+                  <p className="text-gray-900 leading-none">{currentPiece.artist}{' '}</p>
+
+
               </div>
               <div className="flex items-center">
                   <div className="text-sm">
-                  <p className="text-gray-900 leading-none">{currentPiece.artist}{' '}</p>
 
                 </div>
               </div>

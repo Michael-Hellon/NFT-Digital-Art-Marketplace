@@ -62,10 +62,10 @@ const resolvers = {
         line_items.push({
           price_data: {
             currency: 'usd',
-            piece_data: {
+            product_data: {
               name: piece.name,
               description: piece.description,
-              images: [`${url}/images/${piece.image}`]
+              // images: [`${url}/images/${piece.image}`]
             },
             unit_amount: piece.price * 100,
           },

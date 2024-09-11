@@ -3,7 +3,7 @@ import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import './style.css';
+// import './style.css';
 
 function ArtItem(item) {
   const [state, dispatch] = useStoreContext();
@@ -12,8 +12,8 @@ function ArtItem(item) {
     image,
     name,
     _id,
+    quantity,
     price,
-    quantity
   } = item;
 
   const { cart } = state
@@ -40,26 +40,43 @@ function ArtItem(item) {
   }
 
   return (
-    
-    <div className="flex mb-4">
-      <div className="px-1 py-1 w-1/4 h-640">
-
+    <div className="card px-1 py-1">
       <Link to={`/pieces/${_id}`}>
-        <img src={`/images/${image}`} alt={name}/>
-
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl">{name}</div>
-          </div>
-      </Link>      
-          <div className="px-6 pb-2">
-            <div>{quantity} {pluralize("item", quantity)} in stock</div>
-            <span>${price}</span>
-          </div>
-          <div className="px-6 pb-2">
-          <button onClick={addToCart}>Add to cart</button>
-          </div>
-        </div>
+        <img
+          alt={name}
+          src={`/images/${image}`}
+        />
+        <p>{name}</p>
+      </Link>
+      <div>
+        <div>{quantity} {pluralize("item", quantity)} in stock</div>
+        <span>${price}</span>
+      </div>
+      <button onClick={addToCart}>Add to cart</button>
     </div>
+
+
+
+
+    // <div className="flex mb-4">
+    //   <div className="px-1 py-1 w-1/4 h-640">
+
+    //   <Link to={`/pieces/${_id}`}>
+    //     <img src={`/images/${image}`} alt={name}/>
+
+    //       <div className="px-6 py-4">
+    //         <div className="font-bold text-xl">{name}</div>
+    //       </div>
+    //   </Link>      
+    //       <div className="px-6 pb-2">
+    //         <div>{quantity} {pluralize("item", quantity)} in stock</div>
+    //         <span>${price}</span>
+    //       </div>
+    //       <div className="px-6 pb-2">
+    //       <button onClick={addToCart}>Add to cart</button>
+    //       </div>
+    //     </div>
+    // </div>
    
   )
 }

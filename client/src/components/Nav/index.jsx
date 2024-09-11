@@ -11,41 +11,44 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row text-center">
-          <div class="inline-block text-black text-center px-4 py-2 m-2">{
+          <div className="inline-block text-white bg-blue-400 text-center px-4 py-2 m-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">{
           <li className="mx-1">
 
             <Link to="/orderHistory"> 
-              Order History
+            ☁️ Order History ☁️
             </Link>
 
           </li>}
           </div>  
-          <div class="inline-block text-black text-center px-4 py-2 m-2">{          
+          <div className="inline-block text-white bg-blue-400 text-center px-4 py-2 m-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1">{          
           <li className="mx-1">
 
 
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
-              Logout
+            ☁️ Logout ☁️
             </a>
           </li>}
-                      </div>
+          </div>
 
         </ul>
       );
     } else {
       return (
         <>
-        <div class="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">{
+        <div className="flex-row text-center bg-red">
+        <div className="inline-block bg-green text-center px-4 py-2 m-2">{
           <Singup>
        
           </Singup>}
         </div>
-        <div class="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">{
+        <div className="inline-block bg-blue-400 text-center px-4 py-2 m-2">{
           <Login>
 
           </Login>}
         </div>
+        </div>
+
       </>
       );
     }
@@ -58,7 +61,7 @@ function Nav() {
         <div className="text-center">
         <div className="inline-block font-medium text-white text-center text-4xl bg-blue-400 px-4 py-4 m-2">
             <span role="img" aria-label="shopping bag">
-            🛩 OpenAir NFT Market Place 🛩
+            ☁️ 🛩 OpenAir NFT Market Place 🛩 ☁️
             </span>
           </div>
           </div>

@@ -15,7 +15,7 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
-  // console.log("token A from App in:", token);
+  console.log("token A from App in:", token);
 
   return {
     headers: {
@@ -33,12 +33,17 @@ const client = new ApolloClient({
 // don't change below - <outlet> must be there to display items
 function App() {
   return (
-<div className=" bg-blue-400">       
+<div className=" bg-blue-400">
+       
     <ApolloProvider client={client}>
+
       <StoreProvider>
-        <Nav />
+        
+         <Nav />
+
         <Outlet />       
       </StoreProvider>
+
     </ApolloProvider>
  </div>
   );
