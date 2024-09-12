@@ -44,7 +44,7 @@ function ArtList() {
   }
 
   return (
-    <div className="my-2">
+    <div className="text-white my-2">
       <div className="mb-1 text-lg text-white font-medium">
         All of our Pieces of Art are One of a Kind Originals.
       </div>

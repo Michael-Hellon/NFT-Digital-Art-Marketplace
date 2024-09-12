@@ -99,7 +99,7 @@ function Detail() {
     <>
       {currentPiece && cart ? (
         <div className="container m-auto my-3">
-          <div className="text-base">
+          <div className="text-white text-base">
             <Link to="/">← Back to Art Pieces</Link>
           </div>
           <div className="mt-5 justify-center max-w-sm w-full lg:max-w-full lg:flex ">
@@ -108,23 +108,22 @@ function Detail() {
               <img src={`/images/${currentPiece.image}`} alt={currentPiece.name}/>
             </div>
             {/* text box */}
-            <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-r-2xl p-8 flex flex-col justify-between leading-normal">
+            <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-gray-200 rounded-b lg:rounded-r-2xl p-8 flex flex-col justify-between leading-normal">
               <div className="mb-8">
                 {/* <p className="text-sm text-gray-600 flex items-center">
                   <img src={`/images/${currentPiece.image}`} alt={currentPiece.name}/>
                   </p> */}
-                  <div className="currentPieceName text-gray-900 font-bold text-3xl mb-10">{currentPiece.name}</div>
-                  <div className="piecePrice text-gray-900 font-bold text-2xl mb-5">${currentPiece.price}{' '}</div>
-                  <p className="description text-gray-700 text-xl">{currentPiece.description}{' '}</p>
-                  <p className="text-gray-900 leading-none">{currentPiece.artist}{' '}</p>
-
-
+                  <div className="currentPieceName text-gray-900 font-bold text-3xl mb-10">Title: {currentPiece.name}</div>
+                  <div className="piecePrice text-gray-900 font-bold text-xl mb-5">Price: ${currentPiece.price}{' '}</div>
+                  <p className="text-2xl font-bold mb-3" >About the piece</p>
+                  <p className="description text-gray-700 text-2xl">{currentPiece.description}{' '}</p>
+                  <p className="text-gray-700 text-2xl mt-5">Artist: {currentPiece.artist}{' '}</p>
               </div>
               <div className="flex items-center">
                 <div className="text-sm">
                 </div>
               </div> 
-              <button className="text-center px-4 py-2 m-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" onClick={addToCart}>Add to cart</button>
+              <button className="text-center px-4 py-2 m-2 rounded shadow hover:bg-white shadow-lg outline-none focus:outline-none mr-1 mb-1" onClick={addToCart}>Add to cart</button>
             </div>
           </div>
         </div>

@@ -41,28 +41,34 @@ function ArtItem(item) {
   }
 
   return (
-    <div className="card px-1 py-1">
+    <div className="mb-4">
+
+
+    <div className=" x-12 py-1">
       <Link to={`/pieces/${_id}`}>
-        <img
+        <img className="size-120 ml-6 mt-6"
           alt={name}
           src={`/images/${image}`}
         />
-        
-        <p>{name}</p>
-        <p>{artist}</p>
-
-      </Link>
-      <div>
+              </Link>
+      <div className="ml-16 mt-6">
         {/* <div>{quantity} {pluralize("item", quantity)} in stock</div> */}
-        <span>${price}</span>
-        <div className="justify-center">
-        <button onClick={addToCart}>Add to cart</button>
-        </div>
-      </div>
+        <p>Title: {name}</p>
+        <p>Artist: {artist}</p>
 
+        <span>Price: ${price}</span>
+      </div>
+        <div className="ml-12 justify-center">
+        <button className="px-4 py-2 m-2 rounded shadow hover:bg-black text-white shadow-lg outline-none focus:outline-none mr-1 mb-1" onClick={addToCart}>Add to cart</button>
+        </div>
+      
+
+    </div>
     </div>
 
   )
 }
 
 export default ArtItem;
+
+{/* <div className="inline-block text-white bg-blue-400 text-center px-4 py-2 m-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"> */}

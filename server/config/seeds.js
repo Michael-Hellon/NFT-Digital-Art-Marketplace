@@ -10,14 +10,15 @@ db.once('open', async () => {
   // this will be changed to the categories of art, ie: anime, nature, sports, cars, pets, food...
   const categories = await Category.insertMany([
     { name: 'Animals'},   // 0
-    { name: 'Anime' },    // 1
-    { name: 'Nature' },   // 2
-    { name: 'Sports' },   // 3
-    { name: 'Spiritual' },// 4
-    { name: 'Food' },     // 5
-    { name: 'Landmarks'}, // 6
-    { name: 'Patterns'},  // 7
-    
+    { name: 'Nature' },   // 1
+    { name: 'Patterns'},  // 2    
+    { name: 'Spiritual' },// 3
+
+    // { name: 'Sports' },   // 4
+    // { name: 'Food' },     // 5
+    // { name: 'Landmarks'}, // 6
+    // { name: 'Anime' },    // 7
+
   ]);
 
   console.log('categories seeded');
@@ -26,7 +27,7 @@ db.once('open', async () => {
   const pieces = await Piece.insertMany([
     // NFT size no more than 640x640 
     {
-      name: 'Howie 640 The Cat',
+      name: 'Howie',
       description:
         'Howie the cat, in vampire mode with tongue sticking out',
       image: 'Howie640.png',
@@ -40,7 +41,7 @@ db.once('open', async () => {
       description:
         'Colorful Rainbow Mandela.',
       image: 'pattern_x.png',
-      category: categories[7]._id,
+      category: categories[2]._id,
       price: 75.00,
       // quantity: 50,
       artist: 'UnderWorld71',
@@ -50,7 +51,7 @@ db.once('open', async () => {
       description:
         'A Yin and Yang for balance in your life.',
       image: 'balance.png',
-      category: categories[4]._id,
+      category: categories[3]._id,
       price: 20.00,
       // quantity: 500,
       artist: 'UnderWorld71',
@@ -60,7 +61,7 @@ db.once('open', async () => {
       description:
         'Are you floating are falling as you contemplate digital fears and wonders.',
       image: 'awes.png',
-      category: categories[7]._id,
+      category: categories[2]._id,
       price: 45.00,
       // quantity: 500,
       artist: 'UnderWorld71',
@@ -70,7 +71,7 @@ db.once('open', async () => {
       description:
         'A scattered rainbow mosaic.',
       image: 'rainbow.png',
-      category: categories[2]._id,
+      category: categories[1]._id,
       price: 95.00,
       // quantity: 500,
       artist: 'UnderWorld71',

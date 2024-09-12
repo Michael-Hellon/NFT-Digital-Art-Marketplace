@@ -42,21 +42,31 @@ function CategoryMenu() {
   };
 
   return (
-    <div>
+    <div className="text-white" >
       <h2>Choose a Category:</h2>
-      {categories.map((item) => (
-        <button
-          key={item._id}
-          onClick={() => {
-            handleClick(item._id);
-          }}
-        >
-          {item.name}
-        </button>
+      <>
+        {categories.map((item) => (
+        <>
+        <div className="inline-block rounded shadow hover:bg-black text-white shadow-lg outline-none focus:outline-none mr-1 mb-1">
+          <div className="mr-4">
+            <button
+              key={item._id}
+              onClick={() => {
+                handleClick(item._id);
+              }}
+            >
+              {item.name}
+            </button>
+            </div>
+          </div>
+        </>
       ))}
-      <button onClick={() => { handleClick('') }}>
-        All
-      </button>
+        <div className="inline-block rounded shadow hover:bg-black text-white shadow-lg outline-none focus:outline-none mr-1 mb-1">
+          <button onClick={() => { handleClick('') }}>
+            All
+          </button>
+        </div>
+      </>      
     </div>
   );
 }
