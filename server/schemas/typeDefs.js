@@ -10,6 +10,7 @@ const typeDefs = /* GraphQL */`
     description: String
     image: String
     quantity: Int
+    artist: String
     price: Float
     category: Category
   }
@@ -44,6 +45,7 @@ const typeDefs = /* GraphQL */`
     image: String
     price: Float
     quantity: Int
+    artist: String
   }
 
   type Query {

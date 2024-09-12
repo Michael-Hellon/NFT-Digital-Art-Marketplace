@@ -21,7 +21,8 @@ function Login(props) {
       // console.log("token B from login in:", token);
 
       Auth.login(token);
-    } catch (error) {
+    } catch (e) {
+      alert("No User by that name. Sign up first.");
       console.log("Unable to login at this time");
     }
   };

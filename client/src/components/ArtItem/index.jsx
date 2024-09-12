@@ -13,6 +13,7 @@ function ArtItem(item) {
     name,
     _id,
     quantity,
+    artist,
     price,
   } = item;
 
@@ -46,74 +47,22 @@ function ArtItem(item) {
           alt={name}
           src={`/images/${image}`}
         />
+        
         <p>{name}</p>
+        <p>{artist}</p>
+
       </Link>
       <div>
-        <div>{quantity} {pluralize("item", quantity)} in stock</div>
+        {/* <div>{quantity} {pluralize("item", quantity)} in stock</div> */}
         <span>${price}</span>
+        <div className="justify-center">
+        <button onClick={addToCart}>Add to cart</button>
+        </div>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+
     </div>
 
-
-
-
-    // <div className="flex mb-4">
-    //   <div className="px-1 py-1 w-1/4 h-640">
-
-    //   <Link to={`/pieces/${_id}`}>
-    //     <img src={`/images/${image}`} alt={name}/>
-
-    //       <div className="px-6 py-4">
-    //         <div className="font-bold text-xl">{name}</div>
-    //       </div>
-    //   </Link>      
-    //       <div className="px-6 pb-2">
-    //         <div>{quantity} {pluralize("item", quantity)} in stock</div>
-    //         <span>${price}</span>
-    //       </div>
-    //       <div className="px-6 pb-2">
-    //       <button onClick={addToCart}>Add to cart</button>
-    //       </div>
-    //     </div>
-    // </div>
-   
   )
 }
 
 export default ArtItem;
-
-
-    {/* <div className="card px-1 py-1">
-      <Link to={`/pieces/${_id}`}>
-        <img
-          alt={name}
-          src={`/images/${image}`}
-        />
-        <p>{name}</p>
-      </Link>
-      <div>
-        <div>{quantity} {pluralize("item", quantity)} in stock</div>
-        <span>${price}</span>
-      </div>
-      <button onClick={addToCart}>Add to cart</button>
-    </div>
-
-  <div className="max-w-sm rounded overflow-hidden shadow-lg">
-    <div className="card px-1 py-1">
-      <img src={`/images/${image}`} alt={name}>
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">{name}</div>
-        </div>
-        <div class="px-6 pt-4 pb-2">
-          <div>{quantity} {pluralize("item", quantity)} in stock</div>
-          <span>${price}</span>
-        </div>
-        <button onClick={addToCart}>Add to cart</button>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" onClick={addToCart}>Add to cart</span>
-        </div>
-    </div>
-  </div>
-*/}

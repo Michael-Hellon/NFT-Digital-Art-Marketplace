@@ -65,11 +65,12 @@ const resolvers = {
             product_data: {
               name: piece.name,
               description: piece.description,
+
               // images: [`${url}/images/${piece.image}`]
             },
             unit_amount: piece.price * 100,
           },
-          quantity: piece.purchaseQuantity,
+          // quantity: piece.purchaseQuantity,
         });
       }
 

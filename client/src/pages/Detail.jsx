@@ -36,6 +36,7 @@ function Detail() {
         description: piece.description,
         price: piece.price,
         quantity: piece.quantity,
+        artist:piece.artist,
       };
       
       setCurrentPiece(item);
@@ -68,11 +69,11 @@ function Detail() {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity),
       });
       idbPromise('cart', 'put', {
         ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity),
       });
     } else {
       dispatch({
@@ -101,7 +102,7 @@ function Detail() {
           <div className="text-base">
             <Link to="/">← Back to Art Pieces</Link>
           </div>
-          <div className="mt-5 max-w-sm w-full lg:max-w-full lg:flex ">
+          <div className="mt-5 justify-center max-w-sm w-full lg:max-w-full lg:flex ">
             {/* image */}
             <div className="h-auto lg:h-auto lg:w-auto flex-none bg-cover rounded-t-none lg:rounded-l-2xl text-center overflow-hidden">
               <img src={`/images/${currentPiece.image}`} alt={currentPiece.name}/>
@@ -120,10 +121,10 @@ function Detail() {
 
               </div>
               <div className="flex items-center">
-                  <div className="text-sm">
-
+                <div className="text-sm">
                 </div>
-              </div>
+              </div> 
+              <button className="text-center px-4 py-2 m-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1" onClick={addToCart}>Add to cart</button>
             </div>
           </div>
         </div>

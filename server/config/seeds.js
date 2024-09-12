@@ -32,7 +32,7 @@ db.once('open', async () => {
       image: 'Howie640.png',
       category: categories[0]._id,
       price: 35.00,
-      quantity: 10,
+      // quantity: 10,
       artist: 'CrunchyNugget6',
     },
     {
@@ -42,7 +42,7 @@ db.once('open', async () => {
       image: 'pattern_x.png',
       category: categories[7]._id,
       price: 75.00,
-      quantity: 50,
+      // quantity: 50,
       artist: 'UnderWorld71',
     },
     {
@@ -52,7 +52,7 @@ db.once('open', async () => {
       image: 'balance.png',
       category: categories[4]._id,
       price: 20.00,
-      quantity: 500,
+      // quantity: 500,
       artist: 'UnderWorld71',
     },
     {
@@ -62,7 +62,7 @@ db.once('open', async () => {
       image: 'awes.png',
       category: categories[7]._id,
       price: 45.00,
-      quantity: 500,
+      // quantity: 500,
       artist: 'UnderWorld71',
     },
     {
@@ -72,7 +72,7 @@ db.once('open', async () => {
       image: 'rainbow.png',
       category: categories[2]._id,
       price: 95.00,
-      quantity: 500,
+      // quantity: 500,
       artist: 'UnderWorld71',
     },
 

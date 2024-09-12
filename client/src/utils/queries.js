@@ -8,6 +8,7 @@ export const QUERY_PIECES = gql`
       description
       price
       quantity
+      artist
       image
       category {
         _id
@@ -32,6 +33,7 @@ export const QUERY_ALL_PIECES = gql`
       description
       price
       quantity
+      artist
       category {
         name
       }
@@ -62,6 +64,7 @@ export const QUERY_USER = gql`
           description
           price
           quantity
+          artist
           image
         }
       }
