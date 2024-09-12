@@ -70,7 +70,7 @@ const resolvers = {
             },
             unit_amount: piece.price * 100,
           },
-          // quantity: piece.purchaseQuantity,
+          quantity: piece.purchaseQuantity,
         });
       }
 
