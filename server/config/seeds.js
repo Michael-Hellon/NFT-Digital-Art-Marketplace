@@ -26,11 +26,11 @@ db.once('open', async () => {
   //This will change to the NFT items.
   const pieces = await Piece.insertMany([
     // NFT size no more than 640x640 
-    {
+     {
       name: 'Howie',
       description:
         'Howie the cat, in vampire mode with tongue sticking out',
-      image: 'Howie640.png',
+      image: 'Howie.png',
       category: categories[0]._id,
       price: 35.00,
       // quantity: 10,
@@ -45,7 +45,8 @@ db.once('open', async () => {
       price: 75.00,
       // quantity: 50,
       artist: 'UnderWorld71',
-    },
+    },   
+
     {
       name: 'Balance',
       description:

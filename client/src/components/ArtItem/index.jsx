@@ -58,7 +58,7 @@ function ArtItem(item) {
 
         <span>Price: ${price}</span>
       </div>
-        <div className="ml-12 justify-center">
+        <div className="ml-12 justify-center pb-16">
         <button className="px-4 py-2 m-2 rounded shadow hover:bg-black text-white shadow-lg outline-none focus:outline-none mr-1 mb-1" onClick={addToCart}>Add to cart</button>
         </div>
       

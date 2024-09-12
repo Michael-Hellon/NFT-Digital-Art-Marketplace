@@ -98,11 +98,11 @@ function Detail() {
   return (
     <>
       {currentPiece && cart ? (
-        <div className="container m-auto my-3">
+        <div className="container m-auto my-3 ">
           <div className="text-white text-base">
             <Link to="/">← Back to Art Pieces</Link>
           </div>
-          <div className="mt-5 justify-center max-w-sm w-full lg:max-w-full lg:flex ">
+          <div className="mt-5 pb-80 justify-center max-w-sm w-full lg:max-w-full lg:flex mb-4">
             {/* image */}
             <div className="h-auto lg:h-auto lg:w-auto flex-none bg-cover rounded-t-none lg:rounded-l-2xl text-center overflow-hidden">
               <img src={`/images/${currentPiece.image}`} alt={currentPiece.name}/>
